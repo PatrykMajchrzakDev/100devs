@@ -1,0 +1,180 @@
+/* Box Model Hack */
+* {
+  box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+body{
+  font-size: 62.5%;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+nav, ul, main, main div, .services, .services div, .momentumSection, .hairDressers{
+  display: flex;
+  font-size: 1rem;
+}
+
+nav, ul, main{
+  justify-content: space-around;
+}
+ul{
+  
+  flex-basis: 70%;
+}
+
+header{
+  padding: 0 0 2% 0;
+}
+
+nav ul, nav button{
+  margin: 0 15% 0 0;
+}
+
+main{
+  background-image: url(/class10/layout-photos/homework/hair-salon/blonde-girl-medium.jpg);
+  padding: 1rem 0 0 5rem;
+  background-position: 50% 25%;
+  /* background-size: 100% 60rem; */
+  background-repeat: no-repeat;
+  flex-direction: column;
+  padding-bottom: 4rem;
+  background-size: cover;
+
+}
+
+
+main > button{
+  width: 9%;
+}
+main div {
+  outline: 2px solid black;
+  width: 15%;
+  color: white;
+  background-color: black;
+  padding: 1rem;
+  flex-wrap: wrap;
+}
+
+.discount{
+  font-size: 2rem;
+}
+.bot-buttons{
+  width: 4%;
+}
+
+main{
+  color: white;
+}
+
+main h1{
+  font-size: 4rem;
+  margin: 5rem 0 0 0;
+}
+
+.ourServiceButton{
+  background-color: black;
+  color: white;
+  margin: 0 0 1rem 0;
+  padding: 1rem 0;
+}
+
+main .open-hours{
+  color: white;
+  align-self: flex-end;
+  transform: rotate(90deg);
+}
+
+.services div{
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 5rem 0;
+}
+
+.services div img{
+  width: 8rem;
+}
+
+
+
+.momentumDescription, .momentumVidSection{
+  width: 50%;
+  padding: 5rem;
+  background-color: lightgray;
+}
+
+.hairDressers{
+  justify-content: space-evenly;
+  margin-top: 3rem;
+}
+
+.hairDressers div{
+  background-color: black;
+  color: white;
+  height: 4rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  width: 80%;
+  position: relative;
+  bottom: 1.5rem;
+  left: 1rem;
+  align-items: center;
+  align-content: flex-end;
+}
+
+
+ul li{
+  list-style: none;
+} 
+
+
+section.lookbook{
+  display: flex;
+  flex-direction: column;
+  
+}
+
+
+
+/* .lookbook.firstColumnLookBook, .lookbook .secondColumnLookBook, .lookbook .thirdColumnLookBook{
+  flex-direction: column;
+  justify-content: center;
+} */
+
+
+.firstColumnLookBook img:first-child{
+  height: 33%;
+}
+.secondColumnLookBook img:nth-child(2){
+  height: 33%;
+}
+.thirdColumnLookBook img:first-child{
+  height: 33%;
+}
+
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/

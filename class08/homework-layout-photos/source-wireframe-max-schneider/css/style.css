@@ -1,0 +1,85 @@
+/* Box Model Hack */
+* {
+  box-sizing: border-box;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+
+nav ul li{
+  display: inline-block;
+  list-style: none;
+  padding: 0 15px;
+}
+nav ul{
+  margin: 0;
+  padding: 0;
+}
+header nav img{
+  float: left;
+  width: 30%;
+}
+
+header{
+  background-color: rgb(247, 248, 250);
+  padding-bottom: 5%;
+}
+.navButton{
+  float: right;
+}
+.mainSection{
+  padding: 10% 10% 14% 10%;
+  background-color: rgb(247, 248, 250);
+  float: left;
+  width: 50%;
+}
+
+section > img{
+  clear: both;
+  width: 50%;
+}
+
+.features{
+  height: 250px;
+  background-color: rgb(247, 248, 250);
+}
+
+.features > div{
+  margin: 0 0 0 10%;
+}
+
+
+.features div{
+  float: left;
+  width: 10%;
+}
+
+.collectInfoSection{
+  clear: both;
+  margin: 0 0 0 20%;
+}
+
+
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/

@@ -1,0 +1,49 @@
+body {
+    margin: 20px;
+    padding: 25px;
+    border: 5px solid green;
+    background-color: rgb(40, 146, 203);
+    color: white;
+}
+
+h1{
+    text-align: center;
+    font-family: "Source Sans Pro", sans-serif;
+}
+
+header nav ul li{
+    display: inline-block;
+    list-style: none;
+}
+
+header a{
+    color: green;
+}
+
+header{
+    text-align: center;
+}
+
+img{
+    padding-right: 50px;
+    float: right;
+    width: 250px;
+    height: 300px;
+}
+
+footer{
+    margin-top: 100px;
+    text-align: center;
+    display: block;
+}
+
+footer li{
+    list-style: none;
+    display: inline-block;
+    clear: both;
+}
+
+footer a{
+    color: green;
+}
+

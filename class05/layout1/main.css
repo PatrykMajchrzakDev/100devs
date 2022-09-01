@@ -1,0 +1,19 @@
+*{
+    box-sizing: border-box;
+}
+
+header, footer{
+    height: 100px;
+    border: 1px solid gray;
+    clear: both;
+}
+
+section{
+    height: 300px;
+    border: 1px solid gray;
+}
+
+.one{
+    height: 300px;
+    
+}

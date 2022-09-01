@@ -1,0 +1,34 @@
+*{
+    box-sizing: border-box;
+    margin: 0%;
+}
+
+header, section, footer{
+    border: 1px solid grey;
+}
+
+header{
+    height: 150px;
+}
+
+.first{
+    height: 200px;
+}
+
+.second{
+    width: 33.33%;
+    height: 250px;
+    float: left;
+
+}
+
+.third{
+    width: 66.66%;
+    float: right;
+    height: 250px;
+}
+
+footer{
+    height: 150px;
+    clear: both;
+}

@@ -1,0 +1,194 @@
+/* Box Model Hack */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Clear fix hack */
+.clearfix:after {
+     content: ".";
+     display: block;
+     clear: both;
+     visibility: hidden;
+     line-height: 0;
+     height: 0;
+}
+
+.clear {
+	clear: both;
+}
+
+body{
+  line-height: 1.5;
+  font-size: 62.5%;
+  font-family: "Lora", sans-serif;
+}
+
+/******************************************
+/* BASE STYLES
+/*******************************************/
+.orderOnlineSection .orderImgs img{
+  height: 300px;
+  width: 200px;
+}
+
+img{
+  max-width: 100%;
+}
+
+
+
+/******************************************
+/* LAYOUT
+/*******************************************/
+
+nav, nav ul{
+  display: flex;
+}
+
+ul{
+  list-style-type: none;
+}
+
+header, nav{
+  font-size: 1rem;
+}
+h1,h2,h3{
+  margin-bottom: 15px;
+}
+nav a{
+  text-decoration: none;
+}
+
+nav a:hover{
+  color: black;
+}
+nav{
+  justify-content: space-between;
+  height: 40px;
+  background-color: lightgray;
+  align-items: center;
+}
+nav ul li, nav a{
+  margin-left: 15px;
+}
+
+nav a:last-child{
+  margin-right: 30px;
+}
+
+
+header{
+  background-color: lightgray;
+  padding: 20px 40px;
+}
+h1{
+  word-break: break-word;
+  font-size: 3rem;
+}
+
+.searchBar input{
+  width: 300px;
+}
+
+header ul{
+  display: flex;
+  
+}
+
+header ul li:nth-child(2), header ul li:last-child {
+  margin-left: 15px;
+}
+
+
+.aboutUs{
+  font-size: 1rem;
+  margin: 0 15% 0 40%;
+  padding: 4rem 0;
+}
+
+.aboutUs .lastSentence{
+  margin-top: 10px;
+}
+
+h2, h3{
+  font-weight: bold;
+}
+
+.aboutUsHeading{
+  color: orange;
+}
+
+.discoverMenuButton{
+  color: white;
+  padding: 5px;
+  margin-top: 1rem;
+  border-radius: 10px;
+  background-color: orange;
+}
+
+
+.orderOnlineSection{
+  background-color: lightgray;
+}
+
+.orderOnlineSection h3{
+  color: orange;
+  display: flex;
+  justify-content: center;
+  font-size: 1rem;
+  padding-top: 2rem;
+}
+
+
+
+.orderOnlineSection h2{
+  font-size: 2.5rem;
+  display: flex;
+  justify-content: center;
+  padding: 1rem 0 2rem 0;
+}
+
+.orderOnlineSection ul{
+  display: flex;
+  justify-content: center;
+  font-size: 1.1rem;
+  padding-bottom: 2rem;
+}
+
+.orderOnlineSection ul li{
+  display: flex;
+  margin-left: 1.5rem;
+}
+
+.orderImgs{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.orderImgs img{
+  margin: 0 0 2rem 2rem
+  
+}
+/******************************************
+/* ADDITIONAL STYLES
+/*******************************************/
+
+
+@media all and (max-width: 759px){
+  nav ul{
+    display: none;
+  }
+  .orderOnlineSection ul{
+    display: none;
+  }
+}
+
+
+@media all and (max-width: 360px){
+  .searchBar input{
+    width: 100%;
+  }
+}
