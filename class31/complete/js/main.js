@@ -24,7 +24,7 @@ class Dog extends Animal {
   }
 }
 
-class Cat extends Animall {
+class Cat extends Animal {
   constructor(name, breed) {
     super(name);
     this._breed = breed;
@@ -37,6 +37,33 @@ class Cat extends Animall {
     console.log(`${this.name} meows`);
   }
 }
+
+class Planet {
+  constructor(name) {
+    this._name = name;
+  }
+  get name() {
+    return this._name;
+  }
+  orbits() {
+    return true;
+  }
+}
+
+class MassTypePlanet extends Planet {
+  constructor(name, measureInEarthMass) {
+    super(name);
+    this._measureInEarthMass = measureInEarthMass;
+  }
+  get measureInEarthMass() {
+    return this._measureInEarthMass;
+  }
+  clgMass() {
+    console.log(`My mass is ${this.measureInEarthMass}`);
+  }
+}
+
+let mercury = new MassTypePlanet("Mercury", 0.0553);
 
 // class Animal{
 //     constructor(name){
