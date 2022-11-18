@@ -1,47 +1,97 @@
-const express = require('express')
-const app = express()
+const express = require("express");
+const app = express();
+
+let persons = [
+  {
+    id: 1,
+    name: "Arto Hellas",
+    number: "040-123456",
+  },
+  {
+    id: 2,
+    name: "Ada Lovelace",
+    number: "39-44-5323523",
+  },
+  {
+    id: 3,
+    name: "Dan Abramov",
+    number: "12-43-234345",
+  },
+  {
+    id: 4,
+    name: "Mary Poppendieck",
+    number: "39-23-6423122",
+  },
+];
 
 let notes = [
   {
     id: 1,
     content: "HTML is easy",
     date: "2022-01-10T17:30:31.098Z",
-    important: true
+    important: true,
   },
   {
     id: 2,
     content: "Browser can execute only Javascript",
     date: "2022-01-10T18:39:34.091Z",
-    important: false
+    important: false,
   },
   {
     id: 3,
     content: "GET and POST are the most important methods of HTTP protocol",
     date: "2022-01-10T19:20:14.298Z",
-    important: true
+    important: true,
+  },
+];
+
+app.use(express.json());
+
+//Return persons array to html
+app.get("/api/persons", (req, res) => {
+  res.json(persons);
+});
+
+//The page has to show the time that the request was received and how many entries are in the phonebook at the time of processing the request.
+
+app.get("/info", (request, response) => {
+  const currentDate = new Date();
+  response.send(
+    `<h2>Phonebook has info for ${persons.length} people</h2> <h2>${currentDate}</h2>`
+  );
+});
+
+//Implement the functionality for displaying the information for a single phonebook entry. The url for getting the data for a person with the id 5 should be http://localhost:3001/api/persons/5
+// If an entry for the given id is not found, the server has to respond with the appropriate status code.
+
+app.get("/api/persons/:id", (request, response) => {
+  const id = Number(request.params.id);
+  const note = persons.find((item) => item.id === id);
+  console.log(note);
+  if (note) {
+    response.json(note);
+  } else {
+    response.status(404).end();
   }
-]
+});
 
-app.use(express.json())
-
-app.get('/', (req, res) => {
-  res.send('<h1>Hello World!</h1>')
-})
+//
+app.get("/", (req, res) => {
+  res.send("<h1>Hello World!</h1>");
+});
 
 const generateId = () => {
-  const maxId = notes.length > 0
-    ? Math.max(...notes.map(n => n.id))
-    : 0
-  return maxId + 1
-}
+  const maxId = notes.length > 0 ? Math.max(...notes.map((n) => n.id)) : 0;
+  return maxId + 1;
+};
 
-app.post('/api/notes', (request, response) => {
-  const body = request.body
+app.post("/api/notes", (request, response) => {
+  const body = request.body;
 
   if (!body.content) {
-    return response.status(400).json({ 
-      error: 'content missing' 
-    })
+    return response.status(400).json({
+      error: "content missing",
+    });
   }
 
   const note = {
@@ -49,36 +99,39 @@ app.post('/api/notes', (request, response) => {
     important: body.important || false,
     date: new Date(),
     id: generateId(),
-  }
+  };
 
-  notes = notes.concat(note)
+  notes = notes.concat(note);
 
-  response.json(note)
-})
+  response.json(note);
+});
 
-app.get('/api/notes', (req, res) => {
-  res.json(notes)
-})
+//Return arr of all notes
+app.get("/api/notes", (req, res) => {
+  res.json(notes);
+});
 
-app.delete('/api/notes/:id', (request, response) => {
-  const id = Number(request.params.id)
-  notes = notes.filter(note => note.id !== id)
+//Delete method - removes specific doc of given id
+app.delete("/api/notes/:id", (request, response) => {
+  const id = Number(request.params.id);
+  notes = notes.filter((note) => note.id !== id);
 
-  response.status(204).end()
-})
+  response.status(204).end();
+});
 
-app.get('/api/notes/:id', (request, response) => {
-  const id = Number(request.params.id)
-  const note = notes.find(note => note.id === id)
+//returns doc of given id
+app.get("/api/notes/:id", (request, response) => {
+  const id = Number(request.params.id);
+  const note = notes.find((note) => note.id === id);
 
   if (note) {
-    response.json(note)
+    response.json(note);
   } else {
-    response.status(404).end()
+    response.status(404).end();
   }
-})
+});
 
-const PORT = 3001
+const PORT = 3001;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`)
-})
+  console.log(`Server running on port ${PORT}`);
+});
