@@ -1,5 +1,14 @@
 const express = require("express");
 const app = express();
+const morgan = require("morgan");
+
+app.use(express.json());
+app.use(morgan("tiny"));
+
+morgan.token("body", function (req, res) {
+  return `${JSON.stringify(req.body)}`;
+});
+app.use(morgan(":method :url :status - :response-time ms :body"));
 
 let persons = [
   {
@@ -45,8 +54,6 @@ let notes = [
   },
 ];
 
-app.use(express.json());
-
 //Return persons array to html
 app.get("/api/persons", (req, res) => {
   res.json(persons);
@@ -75,13 +82,52 @@ app.get("/api/persons/:id", (request, response) => {
   }
 });
 
+//3.4: Phonebook backend step4
+// Implement functionality that makes it possible to delete a single phonebook entry by making an HTTP DELETE request to the unique URL of that phonebook entry.
+app.delete("/api/persons/:id", (request, response) => {
+  const id = Number(request.params.id);
+  persons = persons.filter((entry) => entry.id !== id);
+  response.status(204).end();
+});
+
+//3.5: Phonebook backend step5
+// Expand the backend so that new phonebook entries can be added by making HTTP POST requests to the address http://localhost:3001/api/persons.
+// Generate a new id for the phonebook entry with the Math.random function. Use a big enough range for your random values so that the likelihood of creating duplicate ids is small.
+app.post("/api/persons", (request, response) => {
+  const body = request.body;
+
+  if (!body.name || !body.number) {
+    return response.status(400).json({ error: "name or number is missing" });
+  }
+
+  if (persons.find((entry) => entry.name === body.name)) {
+    return response.status(409).json({ error: "Name has to be unique" });
+  }
+  let entry = {
+    id: generateId(persons),
+    name: body.name,
+    number: body.number,
+  };
+
+  // 3.6: Phonebook backend step6
+  // Implement error handling for creating new entries. The request is not allowed to succeed, if:
+
+  // The name or number is missing
+  // The name already exists in the phonebook
+  // Respond to requests like these with the appropriate status code, and also send back information that explains the reason for the error, e.g.:
+  // { error: 'name must be unique' }
+
+  persons.push(entry);
+  response.json(entry);
+});
+
 //
 app.get("/", (req, res) => {
   res.send("<h1>Hello World!</h1>");
 });
 
-const generateId = () => {
-  const maxId = notes.length > 0 ? Math.max(...notes.map((n) => n.id)) : 0;
+const generateId = (array) => {
+  const maxId = array.length > 0 ? Math.max(...array.map((n) => n.id)) : 0;
   return maxId + 1;
 };
 
@@ -98,7 +144,7 @@ app.post("/api/notes", (request, response) => {
     content: body.content,
     important: body.important || false,
     date: new Date(),
-    id: generateId(),
+    id: generateId(notes),
   };
 
   notes = notes.concat(note);
